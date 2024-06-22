@@ -1,0 +1,47 @@
+tables:
+  supplier_type:
+    id:
+      type: int8
+      generation_type: sequencial
+      primary_key: true
+    type:
+      type: varchar(30)
+      not_null: true
+      unique: true
+    supplier_name:
+      type: varchar(40)
+      not_null: true
+    created_at:
+      type: timestamp
+      default: now()
+    updated_at:
+      type: timestamp
+  supplier:
+    id:
+      type: int8
+      generation_type: sequencial
+      primary_key: true
+    supplier_type_id:
+      constraint:
+        name: fk_supplier_type_id
+        foreign_key: supplier_type_id
+        table: supplier_type
+        column: id
+    phone:
+      type: varchar(10)
+      not_null: true
+    email:
+      type: varchar(200)
+      not_null: true
+      unique: true
+    high_street:
+      type: varchar(150)
+      not_null: true
+    side_street:
+      type: varchar(150)
+      not_null: true
+    created_at:
+      type: timestamp
+      default: now()
+    updated_at:
+      type: timestamp
