@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+    container_name: test
+    environment:
+      - SPRING_PROFILES_ACTIVE=test
+      - APP_NAME=wedding-planner
+      - DB_HOST=postgres_test
+      - DB_PORT=5432
+      - DB_NAME=wedding_planner
+      - DB_USER=wedding_planner
+      - DB_PASSWORD=wedding_planner
+    depends_on:
+      - db
+    command: >
+      ./gradlew --no-daemon
+      -g ./.gradle-cache
+      test
+  db:
+    image: postgres:latest
+    container_name: postgres_test
+    environment:
+      POSTGRES_DB: wedding_planner
+      POSTGRES_USER: wedding_planner
+      POSTGRES_PASSWORD: wedding_planner
