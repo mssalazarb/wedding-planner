@@ -3,8 +3,6 @@ package com.planner.wedding.wedding.infrastructure.adapter.out.repositories.impl
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Component;
-
 import com.planner.wedding.wedding.domain.model.SupplierType;
 import com.planner.wedding.wedding.domain.ports.out.SupplierTypeRepository;
 import com.planner.wedding.wedding.infrastructure.adapter.out.entities.SupplierTypeEntity;
@@ -13,7 +11,6 @@ import com.planner.wedding.wedding.infrastructure.adapter.out.repositories.Suppl
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-@Component
 public class SupplierTypeRepositoryAdapter implements SupplierTypeRepository {
     private final SupplierTypeJpaRepository jpaRepository;
 

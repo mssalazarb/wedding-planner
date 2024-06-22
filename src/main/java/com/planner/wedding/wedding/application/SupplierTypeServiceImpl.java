@@ -9,7 +9,7 @@ import com.planner.wedding.wedding.domain.ports.out.SupplierTypeRepository;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class SupplierTypeImpl implements SupplierTypeService {
+public class SupplierTypeServiceImpl implements SupplierTypeService {
 
     private final SupplierTypeRepository repository;
 

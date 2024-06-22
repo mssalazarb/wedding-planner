@@ -3,7 +3,7 @@ package com.planner.wedding.wedding.infrastructure.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.planner.wedding.wedding.application.SupplierTypeImpl;
+import com.planner.wedding.wedding.application.SupplierTypeServiceImpl;
 import com.planner.wedding.wedding.domain.ports.in.SupplierTypeService;
 import com.planner.wedding.wedding.domain.ports.out.SupplierTypeRepository;
 import com.planner.wedding.wedding.infrastructure.adapter.out.repositories.SupplierTypeJpaRepository;
@@ -14,7 +14,7 @@ public class SupplierTypeBeans {
 
     @Bean
     SupplierTypeService service(SupplierTypeJpaRepository jpaRepository) {
-        return new SupplierTypeImpl(this.repository(jpaRepository));
+        return new SupplierTypeServiceImpl(this.repository(jpaRepository));
     }
 
     @Bean
