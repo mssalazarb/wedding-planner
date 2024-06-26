@@ -13,6 +13,8 @@ public class EventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long customerId;
+    private Long receptionId;
     private String description;
     private Integer capacity;
     private Timestamp startDate;

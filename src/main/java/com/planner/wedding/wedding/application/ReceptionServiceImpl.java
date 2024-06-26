@@ -13,6 +13,6 @@ public class ReceptionServiceImpl implements ReceptionService {
 
     @Override
     public List<Reception> findAll() {
-        return List.of();
+        return receptionRepository.findAll();
     }
 }

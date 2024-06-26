@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/reception")
+@RequestMapping("/receptions")
 public class ReceptionController {
     private final ReceptionService receptionService;
 

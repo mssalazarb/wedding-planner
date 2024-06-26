@@ -13,6 +13,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> findAll() {
-        return List.of();
+        return customerRepository.findAll();
     }
 }
