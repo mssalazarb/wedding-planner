@@ -8,9 +8,8 @@ import java.time.LocalDateTime;
 public class Customer {
     private Long id;
     private String fullName;
+    private String idNumber;
     private String phone;
     private String email;
     private String address;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

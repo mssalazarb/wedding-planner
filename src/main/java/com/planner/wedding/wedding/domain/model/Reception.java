@@ -13,6 +13,4 @@ public class Reception {
     private String email;
     private String address;
     private BigDecimal price;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }
