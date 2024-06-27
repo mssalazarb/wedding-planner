@@ -3,7 +3,6 @@ package com.planner.wedding.wedding.unit.infraestructure;
 import com.planner.wedding.wedding.domain.model.Event;
 import com.planner.wedding.wedding.domain.ports.in.EventService;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,15 +33,17 @@ class EventControllerTest {
     void shouldReturnSuccess_whenCreateEvent() throws URISyntaxException {
         final String baseUrl = "http://localhost:" + randomServerPort + "/api/wedding-planner/events";
         URI uri = new URI(baseUrl);
+        //arrange
         Event eventRequest = buildEventRequest();
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Event> request = new HttpEntity<>(eventRequest, headers);
 
         when(eventService.create(any(Event.class))).thenReturn(eventRequest);
-
+        //act
         ResponseEntity<String> response = restTemplate.postForEntity(uri, request, String.class);
-
+        //assertion
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
@@ -50,16 +51,20 @@ class EventControllerTest {
     void shouldReturnError_whenDescriptionIsEmpty() throws URISyntaxException {
         final String baseUrl = "http://localhost:" + randomServerPort + "/api/wedding-planner/events";
         URI uri = new URI(baseUrl);
+
+        //arrange
         Event eventRequest = buildEventRequest();
         eventRequest.setDescription("");
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Event> request = new HttpEntity<>(eventRequest, headers);
 
-        when(eventService.create(any(Event.class))).thenReturn(eventRequest);
+        //when(eventService.create(any(Event.class))).thenReturn(eventRequest);
 
+        //act
         ResponseEntity<String> response = restTemplate.postForEntity(uri, request, String.class);
-
+        //assertion
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
     }
 
