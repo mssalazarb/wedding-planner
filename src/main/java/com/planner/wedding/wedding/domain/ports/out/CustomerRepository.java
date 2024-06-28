@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CustomerRepository {
     List<Customer> findAll();
+    Customer create(Customer customer);
+    Customer findById(Long id);
 }

@@ -8,4 +8,6 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ReceptionMapper {
     Reception toReception(ReceptionEntity receptionEntity);
+
+    ReceptionEntity toReceptionEntity(Reception reception);
 }

@@ -1,29 +1,28 @@
 package com.planner.wedding.wedding.infrastructure.exception;
 
-import jakarta.validation.ConstraintViolationException;
+import com.planner.wedding.wedding.domain.error.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @ControllerAdvice
-public class GlobalHandlerException extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<?> constraintViolationException(ConstraintViolationException ex, WebRequest request) {
-        List<String> errors = new ArrayList<>();
+public class GlobalHandlerException {
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> methodArgumentNotValidException(MethodArgumentNotValidException ex, WebRequest request) {
+        ErrorResponse error = buildResponse(ex.getBody().getDetail());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 
-        ex.getConstraintViolations().forEach(cv -> errors.add(cv.getMessage()));
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> notFoundException(NotFoundException ex, WebRequest request) {
+        ErrorResponse error = buildResponse(ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 
-        Map<String, List<String>> result = new HashMap<>();
-        result.put("errors", errors);
-
-        return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+    public ErrorResponse buildResponse(String message) {
+        return new ErrorResponse(message);
     }
 }

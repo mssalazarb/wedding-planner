@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ReceptionService {
     List<Reception> findAll();
+    Reception create(Reception reception);
 }
