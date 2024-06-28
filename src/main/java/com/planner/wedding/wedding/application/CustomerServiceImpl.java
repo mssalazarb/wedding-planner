@@ -1,13 +1,13 @@
 package com.planner.wedding.wedding.application;
 
+import java.util.List;
+
 import com.planner.wedding.wedding.domain.model.Customer;
 import com.planner.wedding.wedding.domain.ports.in.CustomerService;
 import com.planner.wedding.wedding.domain.ports.out.CustomerRepository;
 import com.planner.wedding.wedding.infrastructure.exception.NotFoundException;
-import lombok.AllArgsConstructor;
 
-import java.util.List;
-import java.util.NoSuchElementException;
+import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
