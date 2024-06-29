@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class Customer {
+    private Long id;
     @NotNull(message = "The fullName is required.")
     @NotEmpty(message = "The fullName is required.")
     private String fullName;

@@ -22,6 +22,12 @@ public class GlobalHandlerException {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> notFoundException(RuntimeException ex, WebRequest request) {
+        ErrorResponse error = buildResponse(ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
+
     public ErrorResponse buildResponse(String message) {
         return new ErrorResponse(message);
     }
