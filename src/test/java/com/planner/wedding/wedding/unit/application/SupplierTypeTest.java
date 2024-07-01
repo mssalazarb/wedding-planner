@@ -1,4 +1,4 @@
-package com.planner.wedding.wedding.unit;
+package com.planner.wedding.wedding.unit.application;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
