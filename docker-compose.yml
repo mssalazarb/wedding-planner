@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: test.Dockerfile
     container_name: test
+    volumes:
+      - ./reports:/app/build
     environment:
       - SPRING_PROFILES_ACTIVE=test
       - APP_NAME=wedding-planner
