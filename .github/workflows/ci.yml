@@ -9,22 +9,46 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout branch
-      uses: actions/checkout@v2
+      - name: Checkout branch
+        uses: actions/checkout@v3
 
-    - name: Build application
-      run: docker build -t cargo-solutions .
+      - name: Build application
+        run: docker build -t cargo-solutions .
 
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Executing test
-      run: docker-compose run --rm test
+      - name: Executing test
+        run: docker-compose run --rm test
 
-    - name: Stop services
-      run: docker-compose down -v
+      - name: Stop services
+        run: docker-compose down -v
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report-wedding-planner
+          path: ./reports
+
+  coverage:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: test-report-wedding-planner
+          path: ./build
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: 1dc737ccd82771b602db2be233234d1fdc39ef88
     
