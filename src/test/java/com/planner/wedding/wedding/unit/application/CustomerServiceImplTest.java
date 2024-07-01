@@ -55,7 +55,6 @@ public class CustomerServiceImplTest {
 
     @Test
     void shouldReturnCustomer_whenFindById() {
-        List<Customer> list = DataUtil.buildListCustomerResponse();
         Customer result = DataUtil.buildCustomerResponse();
 
         when(customerRepository.findById(any())).thenReturn(result);
@@ -71,9 +70,7 @@ public class CustomerServiceImplTest {
     @Test
     void shouldReturnError_whenFindById() {
         when(customerRepository.findById(any())).thenReturn(null);
-        Throwable exception = assertThrows(NotFoundException.class, () -> {
-            customerService.findById(1L);
-        });
+        Throwable exception = assertThrows(NotFoundException.class, () -> customerService.findById(1L));
         assertEquals("No exist customer.", exception.getMessage());
     }
 }

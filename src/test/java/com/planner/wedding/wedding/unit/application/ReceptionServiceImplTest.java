@@ -25,8 +25,8 @@ public class ReceptionServiceImplTest {
 
     @Test
     void shouldOk_whenCreate() {
-        Reception request = new Reception();
-        Reception result = new Reception();
+        Reception request = DataUtil.buildReceptionRequest();
+        Reception result = DataUtil.buildReceptionResponse();
 
         when(receptionRepository.create(any())).thenReturn(result);
 
