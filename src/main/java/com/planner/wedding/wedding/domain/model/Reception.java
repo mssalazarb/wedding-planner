@@ -8,6 +8,8 @@ import lombok.Data;
 
 @Data
 public class Reception {
+    private Long id;
+
     @NotNull(message = "The description is required.")
     @NotEmpty(message = "The description is required.")
     private String title;
