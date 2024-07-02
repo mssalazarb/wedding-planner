@@ -1,8 +1,6 @@
 package com.planner.wedding.wedding.unit;
 
-import com.planner.wedding.wedding.domain.model.Customer;
-import com.planner.wedding.wedding.domain.model.Event;
-import com.planner.wedding.wedding.domain.model.Reception;
+import com.planner.wedding.wedding.domain.model.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -112,6 +110,32 @@ public class DataUtil {
 
         List<Reception> list = new ArrayList<>();
         list.add(reception);
+        return list;
+    }
+
+    public static UserSystem buildUserSystemRequest() {
+        UserSystem userSystem = new UserSystem();
+        userSystem.setUserName("carlos@gmail.com");
+        userSystem.setPassword("123456");
+        userSystem.setUserTypeId(1L);
+        return userSystem;
+    }
+
+    public static UserSystem buildUserSystemResponse() {
+        UserSystem userSystem = new UserSystem();
+        userSystem.setUserName("carlos@gmail.com");
+        userSystem.setUserTypeId(1L);
+        return userSystem;
+    }
+
+    public static List<UserType> buildListUserTypeResponse() {
+        UserType userType = new UserType();
+        userType.setId(1L);
+        userType.setName("Cliente");
+        userType.setRelatedTable("customer");
+
+        List<UserType> list = new ArrayList<>();
+        list.add(userType);
         return list;
     }
 }

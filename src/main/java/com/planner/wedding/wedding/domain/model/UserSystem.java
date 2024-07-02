@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserSystem {
+    private Long id;
     @NotNull(message = "The fullName is required.")
     private Long userTypeId;
 

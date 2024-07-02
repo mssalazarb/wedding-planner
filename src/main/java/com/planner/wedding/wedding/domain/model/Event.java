@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 
 @Data
 public class Event {
+    private Long id;
     @NotNull(message = "The customerId is required.")
     private Long customerId;
 
