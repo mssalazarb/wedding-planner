@@ -1,5 +1,7 @@
 package com.planner.wedding.wedding.application;
 
+import java.util.List;
+
 import com.planner.wedding.wedding.domain.model.Event;
 import com.planner.wedding.wedding.domain.ports.in.EventService;
 import com.planner.wedding.wedding.domain.ports.out.EventRepository;
@@ -13,5 +15,10 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event create(Event event) {
         return eventRepository.create(event);
+    }
+
+    @Override
+    public List<Event> findAllEvents() {
+        return eventRepository.findAllEvents();
     }
 }

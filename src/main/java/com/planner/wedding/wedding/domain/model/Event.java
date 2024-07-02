@@ -1,13 +1,15 @@
 package com.planner.wedding.wedding.domain.model;
 
+import java.sql.Timestamp;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import java.sql.Timestamp;
-
 @Data
 public class Event {
+    private Long id;
+
     @NotNull(message = "The customerId is required.")
     private Long customerId;
 
