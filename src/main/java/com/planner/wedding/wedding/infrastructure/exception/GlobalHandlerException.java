@@ -23,7 +23,7 @@ public class GlobalHandlerException {
     }
 
     @ExceptionHandler
-    public ResponseEntity<ErrorResponse> notFoundException(RuntimeException ex, WebRequest request) {
+    public ResponseEntity<ErrorResponse> runtimeException(RuntimeException ex, WebRequest request) {
         ErrorResponse error = buildResponse(ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
