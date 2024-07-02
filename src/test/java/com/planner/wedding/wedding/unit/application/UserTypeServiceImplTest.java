@@ -29,7 +29,7 @@ public class UserTypeServiceImplTest {
         when(userTypeRepository.findAll()).thenReturn(result);
         var response = userTypeService.findAll();
 
-        Assertions.assertEquals(response.get(0).getName(), result.get(0).getName());
-        Assertions.assertEquals(response.get(0).getRelatedTable(), result.get(0).getRelatedTable());
+        Assertions.assertEquals(response.getFirst().getName(), result.getFirst().getName());
+        Assertions.assertEquals(response.getFirst().getRelatedTable(), result.getFirst().getRelatedTable());
     }
 }
